@@ -1,24 +1,58 @@
+// let olTags = document.querySelectorAll("li");
+
+// olTags[0].setAttribute("style", "font-size: 16px", "border: 3px", "border-radius: 5px");
+
 
 //Start Quiz clicked and quiz starts
 let startBtn = document.getElementById("start-btn");
-
 startBtn.addEventListener ("click", startQuiz);
 
+
+let startPage = document.getElementById("startpage");
+//Q1
+let q1 = document.getElementById("question1");
+
+const a1Data = ['strings','booleans','alerts','numbers'];
+let a1 = document.getElementById("answers1");
+
+//Q2
+let q2 = document.getElementById("question2");
+
 //start quiz
-function startQuiz () {
-    let q1 = document.getElementById("question1");
-    document.getElementById("startpage").innerHTML = q1;
+function startQuiz() {
+    startPage.classList.add("hidden");
+    q1.classList.remove("hidden");
+    q1.textContent = "Commonly used data types DO NOT include:";
+
+    a1Data.forEach((item) => {
+        let li = document.createElement ("li");
+        li.innerText = item;
+        a1.appendChild (li);
+    });
+    
+
 }
+
+//fx after first/each question
+function nextQuestion() {
+    q1.classList.add("hidden");
+    q2.classList.remove("hidden");
+    q2.textContent = "The condition in an if/else statement is enclosed with _______."
+}
+
+//fx for score form at the end of game
 
 
 //timer
 var timeEl = document.getElementById("timer");
 
-function setTime () {
+function setTime() {
     var timerInterval = setInterval(function() {
         secondsLeft--;
     })
 }
+
+//penalty time taken away
 
 
 

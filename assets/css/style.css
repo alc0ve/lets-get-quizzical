@@ -28,11 +28,15 @@ nav {
 }
 
 /* Welcome screen to start quiz */
-.startpage {
+#startpage {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     align-content: center;
+}
+
+#startpage.hidden {
+    display: none;
 }
 
 #h1-welcome {
@@ -47,6 +51,10 @@ nav {
     align-items: center;
     font-size: 18px;
 }
+
+/* .hidden {
+    display: none;
+} */
 
 /* Start quiz button */
 #start-btn {
@@ -65,13 +73,15 @@ nav {
     border: none;
 }
 
-/* Quiz boxes */
+/* QUIZ containers */
+/* all questions styled */
 .questions {
     font-weight: 500;
     display: flex;
     justify-content: center;
 }
 
+/* all answer buttons */
 .ans-btn {
     background-color: indigo;
     color: aliceblue;
@@ -88,11 +98,20 @@ nav {
     border: none;
 }
 
-
+/* each question container set to id */
 #question1 {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
+}
+#question1.hidden {
+    display: none;
+}
+
+#question1.questions {
+    font-size: larger;
+    display: flex;
+    justify-content: center;
 }
 
 #question2 {
@@ -100,6 +119,10 @@ nav {
     flex-wrap: wrap;
     flex-direction: column;
 }
+#question2.hidden {
+    display: none;
+}
+
 
 
 @media screen and (max-width: 768px) {
