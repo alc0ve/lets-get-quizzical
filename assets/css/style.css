@@ -1,0 +1,109 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+/* scores/timer bar */
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: larger;
+    align-items: center;
+}
+
+#high-scores {
+    color:blueviolet;
+}
+
+#high-scores:hover {
+    color: pink;
+    cursor: pointer;
+}
+
+/* Welcome screen to start quiz */
+.startpage {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: center;
+}
+
+#h1-welcome {
+    font-size: xx-large;
+    display: flex;
+    justify-content: center;
+}
+
+#p-welcome {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 18px;
+}
+
+/* Start quiz button */
+#start-btn {
+    background-color: indigo;
+    color:aliceblue;
+    border-radius: 5px;
+    font-size: 16px;
+    margin: auto;
+    padding: 15px 20px;
+    cursor: pointer;
+}
+
+#start-btn:hover {
+    background-color: darkorchid;
+    color: aliceblue;
+    border: none;
+}
+
+/* Quiz boxes */
+.questions {
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+}
+
+.ans-btn {
+    background-color: indigo;
+    color: aliceblue;
+    border-radius: 5px;
+    font-size: 16px;
+    padding 15px 20px;
+    cursor: pointer;
+    margin: auto;
+}
+
+.ans-btn:hover {
+    background-color: darkorchid;
+    color: aliceblue;
+    border: none;
+}
+
+
+#question1 {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+#question2 {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+
+@media screen and (max-width: 768px) {
+    body {
+        display: flex;
+    }
+}

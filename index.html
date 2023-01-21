@@ -4,29 +4,46 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <title>Timed Coding Quiz Challenge</title>
-        <link rel="stylesheet" href="./assets/Develop/style.css"/>
+        <link rel="stylesheet" href="./assets/css/style.css"/>
     </head>
 
     <body>
-        <section>
-            <p id="high-scores">View high scores</p>
-            <p id="time">Time: 0</p>
-        </section>
-        <section>
+        <nav>
+            <!-- score/times unchanged throughout entire quiz -->
+            <a id="high-scores">View high scores</a>
+            <p id="timer">Time: 0</p>
+        </nav>
+
+        <!-- Welcome page to start quiz -->
+        <section class="startpage">
             <h1 id="h1-welcome">Coding Quiz Challenge</h1>
-        </section>
-        <section>
             <p id="p-welcome">
                 Try to answer the following code-related questions within the time limit. 
-                <br>Keep in mind that incorrect answers will penalize your score/time by fifteen seconds!
+                <br>Keep in mind that incorrect answers will penalize your score/time by ten seconds!
             </p>
-        </section>
-        <section>
-            <button class="start-button">Start Quiz</button>
+            <!-- Start quiz button -->
+            <button id="start-btn">Start Quiz</button>
         </section>
         
+        <!-- Quiz boxes -->
         <main>
-            <section></section>
+            <!-- each question container set to id for Web API use in script -->
+            <section id="question1">
+                <h1 class="questions">Commonly used data types DO NOT include:</h1>
+                <button class="ans-btn">1. strings</button>
+                <button class="ans-btn">2. booleans</button>
+                <button class="ans-btn">3. alerts</button>
+                <button class="ans-btn">4. numbers</button>
+            </section>
+            <section id="question2">
+                <h1 class="questions">The condition in an if/else statement is enclosed with _______.</h1>
+                <button class="ans-btn">1. quotes</button>
+                <button class="ans-btn">2. curly brackets</button>
+                <button class="ans-btn">3. parenthesis</button>
+                <button class="ans-btn">4. square brackets</button>
+            </section>
         </main>
+
+        <script src="./assets/js/script.js"></script>
     </body>
 </html>
