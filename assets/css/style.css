@@ -1,9 +1,9 @@
 * {
     box-sizing: border-box;
+    font-family:Arial, Helvetica, sans-serif
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
     display: flex;
     flex-direction: column;
 }
@@ -53,7 +53,7 @@ nav {
 }
 
 /* Start quiz button */
-#start-btn {
+button {
     background-color: indigo;
     color:aliceblue;
     border-radius: 5px;
@@ -63,7 +63,7 @@ nav {
     cursor: pointer;
 }
 
-#start-btn:hover {
+button:hover {
     background-color: darkorchid;
     color: aliceblue;
     border: none;
@@ -108,32 +108,22 @@ li::marker {
     display: none;
 }
 
-/* each question container set to id */
-#question1 {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-}
-#question1.hidden {
-    display: none;
-}
-
-#question1.questions {
-    font-size: larger;
-    display: flex;
-    justify-content: center;
+#submitInitials {
+    background-color: indigo;
+    color: aliceblue;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 5px 10px;
+    margin: 5px;
+    cursor: pointer;
 }
 
-#question2 {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
+#submitInitials:hover {
+    background-color: darkorchid;
+    color: aliceblue;
+    border: none;
 }
-#question2.hidden {
-    display: none;
-}
-
-
 
 @media screen and (max-width: 768px) {
     body {

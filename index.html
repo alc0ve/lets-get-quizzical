@@ -1,39 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <title>Timed Coding Quiz Challenge</title>
-        <link rel="stylesheet" href="./assets/css/style.css"/>
-    </head>
 
-    <body>
-        <nav>
-            <!-- score/times unchanged throughout entire quiz -->
-            <a id="high-scores">View high scores</a>
-            <p id="countdown-timer">Time: <span id="timer"></span></p>
-        </nav>
-<!-- Welcome page to start quiz -->
-<section id="startpage">
-    <h1 id="h1-welcome">Coding Quiz Challenge</h1>
-    <p id="p-welcome">
-        Try to answer the following code-related questions within the time limit.
-        <br>Keep in mind that incorrect answers will penalize your score/time by ten seconds!
-    </p>
-    <!-- Start quiz button -->
-    <button id="start-btn">Start Quiz</button>
-</section>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Timed Coding Quiz Challenge</title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
 
-<!-- Quiz boxes -->
-<div>
-    <h2 id="question1"></h2>
-    <ul id="answers1"></ul>
-    <h2 id="question2"></h2>
-    <ul id="answers2"></ul>
-</div>
-        <!-- End of the game where user inputs initials -->
+<body>
+    <nav>
+        <!-- score/times unchanged throughout entire quiz -->
+        <a id="high-scores">View high scores</a>
+        <div id="countdown-timer">Time: <span id="timer"></span></div>
+    </nav>
+    <!-- Welcome page to start quiz -->
+    <section id="startpage">
+        <h1 id="h1-welcome">Coding Quiz Challenge</h1>
+        <p id="p-welcome">
+            Try to answer the following code-related questions within the time limit.
+            <br>Keep in mind that incorrect answers will penalize your score/time by ten seconds!
+        </p>
+        <!-- Start quiz button -->
+        <button id="start-btn">Start Quiz</button>
+    </section>
 
+    <!-- Quiz boxes -->
+    <div id="quizBox" style="display:none">
+        <h2 id="actualQuestion"></h2>
+        <ul>
+            <div id="answerChoices">
+                <button id="answer1"></button>
+            </div>
+            <div>
+                <button id="answer2"></button>
+            </div>
+            <div>
+                <button id="answer3"></button>
+            </div>
+            <div>
+                <button id="answer4"></button>
+            </div>
+        </ul>
 
-        <script src="./assets/js/script.js"></script>
+    </div>
     </body>
+    <!-- end body so end page and score results page can be separated -->
+
+    <!-- End of the game results & high scores; where user inputs initials -->
+    <section id="rightwrongDisplay"></section>
+
+    <div id="allDone" style="display:none">
+        <h2>All done!</h2>
+        Your final score is <var id="finalScore"></var>
+        <br>
+        Enter intials: <input type="text" value="initials" id="initials">
+        <input type="button" value="Submit" id="submitInitials" onclick="submitScore()">
+    </div>
+
+    <script src="./assets/js/script.js"></script>
+
 </html>
