@@ -1,24 +1,16 @@
-// let olTags = document.querySelectorAll("li");
 
-// olTags[0].setAttribute("style", "font-size: 16px", "border: 3px", "border-radius: 5px");
-
-
-//Start Quiz clicked and quiz starts
+//Variables used
 let startBtn = document.getElementById("start-btn");
-startBtn.addEventListener ("click", startQuiz);
-
-
 let startPage = document.getElementById("startpage");
-//Q1
+let qContainer = document.getElementById('qContainer');
 let q1 = document.getElementById("question1");
-
-const a1Data = ['strings','booleans','alerts','numbers'];
+let a1Data = ['1. strings','2. booleans','3. alerts','4. numbers'];
 let a1 = document.getElementById("answers1");
 
-//Q2
-let q2 = document.getElementById("question2");
+//click to start quiz event listener
+startBtn.addEventListener ("click", startQuiz);
 
-//start quiz
+//start quiz function
 function startQuiz() {
     startPage.classList.add("hidden");
     q1.classList.remove("hidden");
@@ -29,27 +21,20 @@ function startQuiz() {
         li.innerText = item;
         a1.appendChild (li);
     });
+
+    a1Data[2] = true;
     
 
 }
 
-//fx after first/each question
-function nextQuestion() {
-    q1.classList.add("hidden");
-    q2.classList.remove("hidden");
-    q2.textContent = "The condition in an if/else statement is enclosed with _______."
-}
-
-//fx for score form at the end of game
-
 
 //timer
-var timeEl = document.getElementById("timer");
+var countDown = document.getElementById("countdown-timer");
+var timer = 75;
+var timerInterval = setInterval(setTime, 1000);
 
 function setTime() {
-    var timerInterval = setInterval(function() {
-        secondsLeft--;
-    })
+    
 }
 
 //penalty time taken away

@@ -11,27 +11,26 @@
         <nav>
             <!-- score/times unchanged throughout entire quiz -->
             <a id="high-scores">View high scores</a>
-            <p id="timer">Time: 0</p>
+            <p id="countdown-timer">Time: <span id="timer"></span></p>
         </nav>
+<!-- Welcome page to start quiz -->
+<section id="startpage">
+    <h1 id="h1-welcome">Coding Quiz Challenge</h1>
+    <p id="p-welcome">
+        Try to answer the following code-related questions within the time limit.
+        <br>Keep in mind that incorrect answers will penalize your score/time by ten seconds!
+    </p>
+    <!-- Start quiz button -->
+    <button id="start-btn">Start Quiz</button>
+</section>
 
-        <!-- Welcome page to start quiz -->
-        <section id="startpage">
-            <h1 id="h1-welcome">Coding Quiz Challenge</h1>
-            <p id="p-welcome">
-                Try to answer the following code-related questions within the time limit. 
-                <br>Keep in mind that incorrect answers will penalize your score/time by ten seconds!
-            </p>
-            <!-- Start quiz button -->
-            <button id="start-btn">Start Quiz</button>
-        </section>
-        
-        <!-- Quiz boxes -->
-        <main>
-            <!-- each question container set to id for Web API use in script -->
-            <div id="question1" class="hidden, questions"></div>
-            <ol id="answers1"></ol>
-            <div id="question2" class="hidden"></div>
-        </main>
+<!-- Quiz boxes -->
+<div>
+    <h2 id="question1"></h2>
+    <ul id="answers1"></ul>
+    <h2 id="question2"></h2>
+    <ul id="answers2"></ul>
+</div>
         <!-- End of the game where user inputs initials -->
 
 

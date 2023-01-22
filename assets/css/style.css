@@ -52,10 +52,6 @@ nav {
     font-size: 18px;
 }
 
-/* .hidden {
-    display: none;
-} */
-
 /* Start quiz button */
 #start-btn {
     background-color: indigo;
@@ -74,6 +70,7 @@ nav {
 }
 
 /* QUIZ containers */
+
 /* all questions styled */
 .questions {
     font-weight: 500;
@@ -82,20 +79,33 @@ nav {
 }
 
 /* all answer buttons */
-.ans-btn {
-    background-color: indigo;
-    color: aliceblue;
-    border-radius: 5px;
-    font-size: 16px;
-    padding 15px 20px;
-    cursor: pointer;
-    margin: auto;
+ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
-.ans-btn:hover {
+li {
+    background-color: indigo;
+    color: aliceblue;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 15px 20px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+li:hover {
     background-color: darkorchid;
     color: aliceblue;
     border: none;
+}
+
+li::marker {
+    display: none;
 }
 
 /* each question container set to id */
