@@ -17,7 +17,7 @@ let qandaArray = [
     {
         question: "Commonly used data types DO NOT include:",
         answerChoices: ["1. strings", "2. booleans", "3. alerts", "4. numbers"],
-        //pick number from array, instead of setting true/false
+        //pick number from array, instead of setting true/false, because of course
         rightAnswer: 2
     },
     {
@@ -67,14 +67,20 @@ startBtn.addEventListener ("click", startQuiz);
 
 //start quiz fx: timer starts as well
 function startQuiz() {
-    //trying another way to hide display?
+    console.log ("This is supposed to start the timer and quiz.")
+    //another way to hide a container
     startPage.classList.add("hidden");
-    quizBox.style.display = "block";
+    //setting styles for the quizBox...
+    quizBox.style.display = "flex";
+    quizBox.style.flexWrap = "wrap";
+    quizBox.style.flexDirection = "column";
+    quizBox.style.alignContent = "center";
+    //calling fx for time and quiz
     setTime();
+    setQandA();
+    //start the time when button is clicked!
     timeStart= true;
 }
-
-
 
 //timer
 let timeStart = false;
@@ -93,9 +99,32 @@ function setTime() {
     document.getElementById("timer").innerHTML = time;
 }
 
+//displaying Questions and Answers for quiz
+function setQandA() {
+    //have to set index to show up!!! Remember from password generator?!
+    //show the question
+    actualQuestion.textContent = qandaArray[index].question;
+    //show answers text in buttons
+    answer1.textContent = qandaArray[index].answerChoices[0];
+    answer2.textContent = qandaArray[index].answerChoices[1];
+    answer3.textContent = qandaArray[index].answerChoices[2];
+    answer4.textContent = qandaArray[index].answerChoices[3];
+}
+
+//when first answer box is clicked
+answer1.addEventListener("click", function () {
+    console.log ("first answer box")
+})
+
 //end quiz
 function endQuiz() {
-    document.getElementById("allDone").style.display="block";
+    //get rid of the QandA at the end
+    document.getElementById("quizBox").style.display="none";
+    //show score and initial input
+    document.getElementById("allDone").style.display="flex";
+    document.getElementById("allDone").style.flexWrap = "wrap";
+    document.getElementById("allDone").style.flexDirection = "column";
+    document.getElementById("allDone").style.alignItems = "flex-start";
 }
 
 function submitScore() {
