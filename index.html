@@ -11,7 +11,7 @@
 <body>
     <nav>
         <!-- score/times unchanged throughout entire quiz -->
-        <a id="high-scores">View high scores</a>
+        <a id="high-scores" src="#">View high scores</a>
         <div id="countdown-timer">Time: <span id="timer"></span></div>
     </nav>
     <!-- Welcome page to start quiz -->
@@ -47,9 +47,17 @@
     </body>
     <!-- end body so end page and score results page can be separated -->
 
-    <!-- End of the game results & high scores; where user inputs initials -->
-    <section id="rightwrongDisplay"></section>
+    <!-- display for right/wrong answers -->
+    <section id="rightwrongDisplay">
+        <div id="correct-answer" class="hidden">
+            <h2>Correct!</h2>
+          </div>
+          <div id="wrong-answer" class="hidden">
+            <h2>Wrong!</h2>
+          </div>
+    </section>
 
+        <!-- End of the game results & high scores; where user inputs initials -->
     <div id="allDone" style="display:none">
         <h2>All done!</h2>
         Your final score is <var id="finalScore"></var>

@@ -9,6 +9,9 @@ let answer1= document.getElementById("answer1");
 let answer2= document.getElementById("answer2");
 let answer3= document.getElementById("answer3");
 let answer4= document.getElementById("answer4");
+let finalScore= document.getElementById("finalScore");
+let score;
+let submitInitials= document.getElementById("submitInitials");
 //SETTING A FREAKING INDEX TO THE Q's!!!👊
 let index= 0;
 
@@ -17,60 +20,60 @@ let qandaArray = [
     {
         question: "Commonly used data types DO NOT include:",
         answerChoices: ["1. strings", "2. booleans", "3. alerts", "4. numbers"],
-        //pick number from array, instead of setting true/false, because of course
-        rightAnswer: 2
+        rightAnswer: "3. alerts"
     },
     {
         question: "The condition in an if/else statement is enclosed with _______.",
         answerChoices: ["1. quotes", "2. curly brackets", "3. parenthesis", "4. square brackets"],
-        rightAnswer: 2
+        rightAnswer: "3. parenthesis"
     },
     {
         question: "Arrays in JavaScript can be used to store _______.",
         answerChoices: ["1. numbers and strings", "2. other arrays", "3. booleans", "4. all of the above"],
-        rightAnswer: 3
+        rightAnswer: "4. all of the above"
     },
     {
         question: "String values must be enclosed within ______ when being assigned to variables.",
         answerChoices: ["1. commas", "2. curly brackets", "3. quotes", "4. parenthesis"],
-        rightAnswer: 3
+        rightAnswer: "3. quotes"
     },
     {
         question: "A very useful tool used during development and debugging for printing content to the debugger is:",
         answerChoices: ["1. JavaScript", "2. terminal/bash", "3. for loops", "4. console.log"],
-        rightAnswer: 3
+        rightAnswer: "4. console.log"
     },
     {
-        question: "Inside which HTML element do we put the JavaScript?",
-        answerChoices: ["1. <script>", "2. <scripting>", "3. <js>", "4. <javascript>"],
-        rightAnswer: 0
+        question: "Inside which HTML tag do we put the JavaScript?",
+        answerChoices: ["1. script", "2. scripting", "3. js", "4. javascript"],
+        rightAnswer: "1. script"
     },
     {
         question: "How can you add a comment in a JavaScript?",
         answerChoices: ["1. 'This is a comment'", "2. //This is a comment", "3. <!-- This is a comment -->", "4. *This is a comment"],
-        rightAnswer: 1
+        rightAnswer: "2. //This is a comment"
     },
     {
         question: "Which operator is used to assign a value to a variable?",
         answerChoices: ["1. =", "2. -", "3. X", "4. ~"],
-        rightAnswer: 0
+        rightAnswer: "1. ="
     },
     {
         question: "Which event occurs when the user clicks on a HTML element?",
         answerChoices: ["1. onclick", "2. onchange", "3. onmouseclick", "4. onmouseover"],
-        rightAnswer: 0
+        rightAnswer: "1. onclick"
     }
 ]
 
 //click to start quiz event listener
 startBtn.addEventListener ("click", startQuiz);
 
-//start quiz fx: timer starts as well
+//start quiz fx: timer starts
 function startQuiz() {
+    score = 0;
     console.log ("This is supposed to start the timer and quiz.")
     //another way to hide a container
     startPage.classList.add("hidden");
-    //setting styles for the quizBox...
+    //setting styles for the quizBox
     quizBox.style.display = "flex";
     quizBox.style.flexWrap = "wrap";
     quizBox.style.flexDirection = "column";
@@ -80,9 +83,11 @@ function startQuiz() {
     setQandA();
     //start the time when button is clicked!
     timeStart= true;
+    //set high score in an array and append it at the end; have a way to empty it at the end (clearInterval)
+    finalScore = 0;
 }
 
-//timer
+//timer, sets time var
 let timeStart = false;
 let timeRemaining = true;
 let countDown = document.getElementById("countdown-timer");
@@ -111,13 +116,52 @@ function setQandA() {
     answer4.textContent = qandaArray[index].answerChoices[3];
 }
 
-//when first answer box is clicked
-answer1.addEventListener("click", function () {
-    console.log ("first answer box")
-})
+//so it connect to html
+const correctAnswerEl = document.getElementById('correct-answer');
+const wrongAnswerEl = document.getElementById('wrong-answer');
 
-//end quiz
+//run after clicking answer, to go to next question
+function answerChosen(event) {
+    console.log (event);
+    console.log (qandaArray[index].rightAnswer);
+    console.log (event.target.innerHTML);
+    if (event.target.innerHTML == qandaArray[index].rightAnswer) {
+        correctAnswerEl.classList.remove('hidden');
+        wrongAnswerEl.classList.add('hidden');
+      } else {
+        wrongAnswerEl.classList.remove('hidden');
+        correctAnswerEl.classList.add('hidden');
+    }
+    //figure this portion out!*********
+    if (event.target.innerHtml == qandaArray[index].rightAnswer) {
+        score= (score + 10);
+    } 
+    console.log (score);
+    //index++ will move it to the next question
+    index++
+    //if quiz is done before timer ends, it'll end regardless of time if finished
+    if (index == qandaArray.length-1) {
+        endQuiz();
+    }
+    setQandA(qandaArray[index]);
+}
+
+//when first answer box is clicked
+answer1.addEventListener("click",(event) => answerChosen(event));
+
+//second answer box is clicked
+answer2.addEventListener("click",(event) => answerChosen(event));
+
+//third answer box is clicked
+answer3.addEventListener("click",(event) => answerChosen(event));
+
+//fourth answer box is clicked
+answer4.addEventListener("click",(event) => answerChosen(event));
+
+//end quiz page
 function endQuiz() {
+    correctAnswerEl.classList.add("hidden");
+    wrongAnswerEl.classList.add("hidden");
     //get rid of the QandA at the end
     document.getElementById("quizBox").style.display="none";
     //show score and initial input
@@ -128,5 +172,7 @@ function endQuiz() {
 }
 
 function submitScore() {
+    finalScore = (" " + score);
 
 }
+console.log (finalScore);
