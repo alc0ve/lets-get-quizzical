@@ -11,8 +11,8 @@
 <body>
     <nav>
         <!-- score/times unchanged throughout entire quiz -->
-        <a id="high-scores" src="#">View high scores</a>
-        <div id="countdown-timer">Time: <span id="timer"></span></div>
+        <a id="high-scores" href="#high-score-page">View high scores</a>
+        <div id="countdown-timer" class="hidden">Time: <span id="timer"></span></div>
     </nav>
     <!-- Welcome page to start quiz -->
     <section id="startpage">
@@ -64,6 +64,13 @@
         <br>
         Enter intials: <input type="text" value="initials" id="initials">
         <input type="button" value="Submit" id="submitInitials" onclick="submitScore()">
+    </div>
+
+    <div id="high-score-page" class="hidden">
+        <h2>High scores</h2>
+        <div id="initialshs-box"></div>
+        <input type="button" value="Go back" id="goback-btn" onclick="goBack()">
+        <input type="button" value="Clear high scores" id="clearhs-btn" onclick="clearhs()">
     </div>
 
     <script src="./assets/js/script.js"></script>

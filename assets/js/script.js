@@ -12,6 +12,7 @@ let answer4= document.getElementById("answer4");
 let finalScore= document.getElementById("finalScore");
 let score;
 let submitInitials= document.getElementById("submitInitials");
+let highscorePage= document.getElementById("high-score-page");
 //SETTING A FREAKING INDEX TO THE Q's!!!👊
 let index= 0;
 
@@ -73,6 +74,7 @@ function startQuiz() {
     console.log ("This is supposed to start the timer and quiz.")
     //another way to hide a container
     startPage.classList.add("hidden");
+    countDown.classList.remove("hidden");
     //setting styles for the quizBox
     quizBox.style.display = "flex";
     quizBox.style.flexWrap = "wrap";
@@ -87,9 +89,8 @@ function startQuiz() {
     finalScore = 0;
 }
 
-//timer, sets time var
+//timer
 let timeStart = false;
-let timeRemaining = true;
 let countDown = document.getElementById("countdown-timer");
 let time = 75;
 let timerInterval = setInterval(setTime, 1000);
@@ -104,9 +105,8 @@ function setTime() {
     document.getElementById("timer").innerHTML = time;
 }
 
-//displaying Questions and Answers for quiz
+//displaying Q&A for quiz
 function setQandA() {
-    //have to set index to show up!!! Remember from password generator?!
     //show the question
     actualQuestion.textContent = qandaArray[index].question;
     //show answers text in buttons
@@ -116,27 +116,28 @@ function setQandA() {
     answer4.textContent = qandaArray[index].answerChoices[3];
 }
 
-//so it connect to html
+//so it connects to id in html
 const correctAnswerEl = document.getElementById('correct-answer');
 const wrongAnswerEl = document.getElementById('wrong-answer');
 
 //run after clicking answer, to go to next question
 function answerChosen(event) {
-    console.log (event);
     console.log (qandaArray[index].rightAnswer);
     console.log (event.target.innerHTML);
     if (event.target.innerHTML == qandaArray[index].rightAnswer) {
-        correctAnswerEl.classList.remove('hidden');
-        wrongAnswerEl.classList.add('hidden');
-      } else {
-        wrongAnswerEl.classList.remove('hidden');
-        correctAnswerEl.classList.add('hidden');
+        correctAnswerEl.classList.remove("hidden");
+        wrongAnswerEl.classList.add("hidden");
+        //add 10pts if answer is right
+        score+=10;
+    } else {
+        wrongAnswerEl.classList.remove("hidden");
+        correctAnswerEl.classList.add("hidden");
+        //take 10secs off if answer is wrong
+        time-= 10;
+        document.getElementById("timer").innerHTML;
     }
-    //figure this portion out!*********
-    if (event.target.innerHtml == qandaArray[index].rightAnswer) {
-        score= (score + 10);
-    } 
-    console.log (score);
+    console.log(score + " this will be my score!");
+    console.log(time);
     //index++ will move it to the next question
     index++
     //if quiz is done before timer ends, it'll end regardless of time if finished
@@ -145,6 +146,7 @@ function answerChosen(event) {
     }
     setQandA(qandaArray[index]);
 }
+
 
 //when first answer box is clicked
 answer1.addEventListener("click",(event) => answerChosen(event));
@@ -162,6 +164,7 @@ answer4.addEventListener("click",(event) => answerChosen(event));
 function endQuiz() {
     correctAnswerEl.classList.add("hidden");
     wrongAnswerEl.classList.add("hidden");
+    countDown.classList.add("hidden");
     //get rid of the QandA at the end
     document.getElementById("quizBox").style.display="none";
     //show score and initial input
@@ -171,8 +174,46 @@ function endQuiz() {
     document.getElementById("allDone").style.alignItems = "flex-start";
 }
 
+//figure this out******
 function submitScore() {
-    finalScore = (" " + score);
+    document.getElementById("quizBox").style.display="none";
+    document.getElementById("allDone").style.display="none";
+    highscorePage.classList.remove("hidden");
+    // if localStorage.scores does not exit then localStorage.scores is an array with a value; and if it does exist, then we'll use push
+    //finalScore = (" " + score);
+    // if there is a localstorage item called scores
+    if (localStorage.getItem("scores")) {
+        // create a copy for us to mess with
+        let copyArr = localStorage.getItem("scores");
+        // add our new value to the array
+        copyArr.push({initials: score})
+        // overwrite local storage to our update array
+        localStorage.setItem("scores", copyArr)
+    } else {
+        // since localStorage.scores doesn't exist, create one
+        let startingArr = [{initials: score}]
+        // write to local storage
+        localStorage.setItem("scores", startingArr)
+    }
+}
+
+let localStorage = {}
+
+localStorage.scores = []
+
+let newScore = {BR: 10}
+let myArr = localStorage.scores
+myArr.push(newScore)
+
+localStorage.scores = myArr
+
+//take back to welcome page
+function goBack () {
+    startPage.classList.remove("hidden");
+    highscorePage.classList.add("hidden");
+}
+
+//clear high scores from view high scores page
+function clearhs() {
 
 }
-console.log (finalScore);
