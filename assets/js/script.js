@@ -184,7 +184,7 @@ function endQuiz() {
 
     let initialsScores = {
         initials: initials.value.trim()
-        // finalScore: score.value
+        // appendScores
     };
 
     localStorage.setItem("typedInitials", JSON.stringify(initialsScores));

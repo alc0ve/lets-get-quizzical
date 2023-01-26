@@ -12,13 +12,19 @@ I started the quiz app with a blank slate. I started to put everything in index.
 
 The user will begin at the start page where an explanation of the quiz is presented. The user then clicks "Start Quiz" to start quiz as well as the timer. User has 75 seconds to complete the quiz. There are nine questions total. Correct answers will earn the user ten points, and wrong answers will deduct ten seconds from the timer. Once the quiz comes to an end, or the user runs out of time, the screen will display total score and have a box for the user to input their initials and a submit button. There will also be a link at the top left corner where the user can go back and review high scores.
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative file path, add it to your README using the following syntax:
+Screenshot of quiz page:
+![alt text](./assets/images/Screenshot-welcomepage-quiz.png)
 
-![alt text](assets/images/screenshot.png)
+Screenshot of quiz in action:
+![alt text](./assets/images/Screenshot-after-startquiz-btn-click.png)
+
+Link to take quiz: https://alc0ve.github.io/lets-get-quizzical/
+
+GitHub: https://github.com/alc0ve/lets-get-quizzical
 
 ## Credits
 
-I'd like to thank BJ for a lot of my understanding in making this application. He was able to explain it to me in a way that I comprehended instead of reading it off of a page. He would make an awesome tutor! I'd like to thank my tutor, Brandon Rose, for helping me debug scores and seconds taken away issues. He also went through and clarified use of local storage and showed me an abundance of ways I could go about using that data. I have also listed some websites that helped me along the way.
+I'd like to thank BJ for a lot of my understanding in making this application. He was able to explain it to me in a way that I comprehended instead of reading it off of a page. He would make an awesome tutor! Thanks to my tutor, Brandon Rose, for helping me debug scores and seconds taken away issues. He also went through and clarified use of local storage and showed me an abundance of ways I could go about using that data. I have also listed some websites that helped me along the way. Thanks Celeste, one of the TAs, for helping me as well! 
 
 This is the website that initially showed me how to make a list from answer array.
 https://www.geeksforgeeks.org/how-to-creating-html-list-from-javascript-array/
