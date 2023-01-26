@@ -11,7 +11,7 @@
 <body>
     <nav>
         <!-- score/times unchanged throughout entire quiz -->
-        <a id="high-scores" href="#high-score-page">View high scores</a>
+        <a id="high-scores" href="#">View high scores</a>
         <div id="countdown-timer" class="hidden">Time: <span id="timer"></span></div>
     </nav>
     <!-- Welcome page to start quiz -->
@@ -60,13 +60,14 @@
         <!-- End of the game results & high scores; where user inputs initials -->
     <div id="allDone" style="display:none">
         <h2>All done!</h2>
-        Your final score is <var id="finalScore"></var>
+        <!-- finalScoreappend? id -->
+        <p>Your final score is <div id="finalScore"></div></p>
         <br>
-        Enter intials: <input type="text" value="initials" id="initials">
+        <p for="initials">Enter intials: <textarea id="initials" name="initials"></textarea></p>
         <input type="button" value="Submit" id="submitInitials" onclick="submitScore()">
     </div>
 
-    <div id="high-score-page" class="hidden">
+    <div id="high-score-page" style="display:none">
         <h2>High scores</h2>
         <div id="initialshs-box"></div>
         <input type="button" value="Go back" id="goback-btn" onclick="goBack()">

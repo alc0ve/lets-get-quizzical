@@ -85,8 +85,7 @@ function startQuiz() {
     setQandA();
     //start the time when button is clicked!
     timeStart= true;
-    //set high score in an array and append it at the end; have a way to empty it at the end (clearInterval)
-    finalScore = 0;
+    //set high score in an array and append it at the end?; have a way to empty it at the end (clearInterval)
 }
 
 //timer
@@ -116,7 +115,7 @@ function setQandA() {
     answer4.textContent = qandaArray[index].answerChoices[3];
 }
 
-//so it connects to id in html
+//setting variables for right/wrong answers
 const correctAnswerEl = document.getElementById('correct-answer');
 const wrongAnswerEl = document.getElementById('wrong-answer');
 
@@ -160,7 +159,11 @@ answer3.addEventListener("click",(event) => answerChosen(event));
 //fourth answer box is clicked
 answer4.addEventListener("click",(event) => answerChosen(event));
 
-//end quiz page
+
+
+
+
+//end quiz page; figure this out- total score needs to show up
 function endQuiz() {
     correctAnswerEl.classList.add("hidden");
     wrongAnswerEl.classList.add("hidden");
@@ -172,48 +175,64 @@ function endQuiz() {
     document.getElementById("allDone").style.flexWrap = "wrap";
     document.getElementById("allDone").style.flexDirection = "column";
     document.getElementById("allDone").style.alignItems = "flex-start";
+
+    localStorage.setItem("scores", score);
+
+    let appendScores = localStorage.getItem("scores");
+
+    finalScore.innerText= appendScores;
+
+    let initialsScores = {
+        initials: initials.value.trim()
+        // finalScore: score.value
+    };
+
+    localStorage.setItem("typedInitials", JSON.stringify(initialsScores));
 }
+
 
 //figure this out******
 function submitScore() {
     document.getElementById("quizBox").style.display="none";
     document.getElementById("allDone").style.display="none";
-    highscorePage.classList.remove("hidden");
-    // if localStorage.scores does not exit then localStorage.scores is an array with a value; and if it does exist, then we'll use push
-    //finalScore = (" " + score);
-    // if there is a localstorage item called scores
-    if (localStorage.getItem("scores")) {
-        // create a copy for us to mess with
-        let copyArr = localStorage.getItem("scores");
-        // add our new value to the array
-        copyArr.push({initials: score})
-        // overwrite local storage to our update array
-        localStorage.setItem("scores", copyArr)
-    } else {
-        // since localStorage.scores doesn't exist, create one
-        let startingArr = [{initials: score}]
-        // write to local storage
-        localStorage.setItem("scores", startingArr)
+    document.getElementById("high-score-page").style.display= "flex";
+    document.getElementById("high-score-page").style.flexWrap= "wrap";
+    document.getElementById("high-score-page").style.flexDirection= "wrap";
+    document.getElementById("high-score-page").style.alignItems= "flex-start";
+
     }
-}
-
-let localStorage = {}
-
-localStorage.scores = []
-
-let newScore = {BR: 10}
-let myArr = localStorage.scores
-myArr.push(newScore)
-
-localStorage.scores = myArr
 
 //take back to welcome page
 function goBack () {
     startPage.classList.remove("hidden");
     highscorePage.classList.add("hidden");
+    document.getElementById("allDone").style.display= "none";
+    reloadQuiz();
 }
 
-//clear high scores from view high scores page
-function clearhs() {
+//clear high scores from view high scores page; clearInvterval??
+// function clearhs() {
+//     clearInterval(appendScores);
+// }
 
+
+// reload the quiz to retake
+function reloadQuiz() {
+  location.reload();
 }
+
+
+    // if localStorage.scores does not exit then localStorage.scores is an array with a value; and if it does exist, then we'll use push
+
+
+// let localStorage = {}
+
+// localStorage.scores = []
+
+// let newScore = {BR: 10}
+// let myArr = localStorage.scores
+// myArr.push(newScore)
+
+// localStorage.scores = myArr
+
+//final score should be whatever their score is at the end of the quiz. the final score at the end of the quiz should be push into an array of scores. high score should return the highest number in the array of scores
